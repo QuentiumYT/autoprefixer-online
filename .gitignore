@@ -1,3 +1,10 @@
+# IDE / Editor
+.idea/
+.vscode/
+
+# Dependency directory
+node_modules/
+
+# File systems
 .DS_Store
-node_modules
-.history
+Thumbs.db
