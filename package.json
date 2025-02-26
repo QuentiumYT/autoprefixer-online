@@ -1,13 +1,18 @@
 {
-  "name": "autoprefixer_online",
+  "name": "autoprefixer-online",
   "version": "1.0.0",
   "main": "./src/main.js",
-  "repository": "git@github.com:autoprefixer/autoprefixer.github.io.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuentiumYT/autoprefixer-online.git"
+  },
   "author": "ymatuhin <ym@ymatuhin.ru>",
+  "contributors": [
+    "Quentin Lienhardt <pro@quentium.fr>"
+  ],
   "license": "MIT",
   "scripts": {
-    "start": "npm run build",
-    "build": "rm -rf ./docs/** && vite build",
+    "build": "vite build",
     "dev": "vite",
     "preview": "http-server ./docs"
   },
