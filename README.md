@@ -1,3 +1,3 @@
-# autoprefixer.github.io
+# Autoprefixer Online
 
- Online interactive demo of [Autoprefixer](https://github.com/postcss/autoprefixer)
+Online interactive demo: https://quentiumyt.github.io/autoprefixer-online/

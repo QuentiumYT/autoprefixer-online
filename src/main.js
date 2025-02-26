@@ -25,7 +25,7 @@ class App {
 
   vars() {
     this.browserList = store.get("autoprefixer:browsers", DEFAULT_BROWSERS);
-    this.withComments = store.get("autoprefixer:withComments", true);
+    this.withComments = store.get("autoprefixer:withComments", false);
     this.$leftPane = document.querySelector(".js-input");
     this.$rightPane = document.querySelector(".js-output");
     this.$filterForm = document.querySelector(".js-filter");
@@ -54,7 +54,7 @@ class App {
 
   generateOutputComment() {
     return `/*
-* Prefixed by https://autoprefixer.github.io
+* Prefixed by https://quentiumyt.github.io/autoprefixer-online/
 * PostCSS: v${postcssVersion},
 * Autoprefixer: v${autoprefixerVersion}
 * Browsers: ${this.browserList}
