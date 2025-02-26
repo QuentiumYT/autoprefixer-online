@@ -37,4 +37,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add package.json package-lock.json
-          git commit -m "Update dependencies"
+          git diff-index --quiet HEAD || git commit -m "Update dependencies"
