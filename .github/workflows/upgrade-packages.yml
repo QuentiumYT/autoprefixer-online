@@ -1,0 +1,40 @@
+name: Upgrade NPM packages
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  "0 0 * * 0"
+
+jobs:
+  upgrade-packages:
+    name: Upgrade packages
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install -g npm-check-updates
+
+      - name: Update autoprefixer & postcss packages
+        run: |
+          npm-check-updates -f autoprefixer -u
+          npm-check-updates -f postcss -u
+          npm install
+
+      - name: Commit package.json changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add package.json package-lock.json
+          git commit -m "Update dependencies"
