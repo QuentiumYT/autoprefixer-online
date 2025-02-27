@@ -4,13 +4,11 @@ import { highlightElement } from "prismjs";
 import store from "store";
 
 import { CSS_EXAMPLE, DEFAULT_BROWSERS } from "./config";
-import langRedirect from "./redirect.js";
 
 import "./main.scss";
 
 class App {
   constructor() {
-    if (langRedirect()) return;
     this.loadChunks();
   }
 
