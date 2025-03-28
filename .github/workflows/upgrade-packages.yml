@@ -14,14 +14,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          lfs: true
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 22
 
       - name: Install dependencies
         run: npm install -g npm-check-updates
@@ -32,10 +29,14 @@ jobs:
           npm-check-updates -f postcss -u
           npm install
 
+      - name: Build docs
+        run: |
+          npm run build
+
       - name: Commit package.json changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add package.json package-lock.json
+          git add package.json package-lock.json docs/
           git diff-index --quiet HEAD || git commit -m "Update dependencies"
           git push
