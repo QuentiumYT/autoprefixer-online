@@ -1,4 +1,4 @@
-name: Upgrade NPM packages
+name: Update NPM packages
 
 on:
   workflow_dispatch:
@@ -6,22 +6,19 @@ on:
     - cron:  "0 0 * * 0"
 
 jobs:
-  upgrade-packages:
-    name: Upgrade packages
+  update-packages:
+    name: Update packages
 
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          lfs: true
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 22
 
       - name: Install dependencies
         run: npm install -g npm-check-updates
@@ -32,10 +29,14 @@ jobs:
           npm-check-updates -f postcss -u
           npm install
 
-      - name: Commit package.json changes
+      - name: Build docs
+        run: |
+          npm run build
+
+      - name: Commit package and docs changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add package.json package-lock.json
-          git diff-index --quiet HEAD || git commit -m "Update dependencies"
+          git add package.json package-lock.json docs/
+          git diff-index --quiet HEAD || git commit -m "Update dependencies & build docs"
           git push
