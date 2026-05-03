@@ -26,7 +26,7 @@
     "autoprefixer": "^10.5.0",
     "bettertext.css": "^2.0.5",
     "modern-normalize": "^3.0.1",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.13",
     "prismjs": "^1.29.0",
     "store": "^2.0.12"
   }
